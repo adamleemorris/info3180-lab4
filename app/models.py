@@ -15,9 +15,11 @@ class UserProfile(db.Model):
     password = db.Column(db.String(128))
 
     def __init__(self, first_name, last_name, username, password):
+        
         self.first_name = first_name
         self.last_name = last_name
         self.username = username
+
         self.password = generate_password_hash(password, method='pbkdf2:sha256')
 
     def is_authenticated(self):
